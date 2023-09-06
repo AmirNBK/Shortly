@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
+  <link href="/dist/output.css" rel="stylesheet">
   <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
   </style>
 </head>
-<body>
+
+<body style="font-family: Poppins;" class="overflow-hidden">
 
   <!-- Features
   Pricing
@@ -77,18 +84,50 @@
   Careers
   Contact -->
 
-  <nav class="Header">
-    <div class="Header__leftside">
-      
-    </div>
-    <div class="Header__rightside">
+  <nav class="Header flex flex-row justify-between px-36 mt-12">
+    <div class="Header__leftside flex items-center gap-12">
+      <img src="./images/logo.svg" alt="logo" />
+      <ul class="headerItems flex gap-6 font-medium	text-dark-gray">
 
+      </ul>
+    </div>
+    <div class="Header__rightside flex gap-12 items-center">
+      <p class="text-dark-gray font-medium"> Login </p>
+      <p class="font-bold bg-main-cyan text-white px-7 py-3 rounded-full text-sm"> Sign up </p>
     </div>
   </nav>
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Amir NBK</a>.
+
+
+  <div class="HeroSection flex items-center flex-row pl-36 mt-20">
+    <div class="HeroSection__leftside flex flex-col gap-8">
+      <h1 class="text-6xl font-bold" style="color : hsl(257, 27%, 26%)"> More than just shorter links </h1>
+      <p class="text-dark-gray text-xl">
+        Build your brand’s recognition and get detailed insights
+        on how your links are performing.
+      </p>
+      <p class="font-bold bg-main-cyan text-white px-10 py-3 rounded-full text-sm w-fit"> Get started </p>
+    </div>
+    <div class="HeroSection__pic" style="transform: translateX(100px);">
+      <img src="./images/illustration-working.svg" />
+    </div>
   </div>
+
+  <div class="shorten-link-section mx-36 flex flex-row justify-centerrounded-md justify-center gap-4"
+  style="background-image: url(./images/bg-shorten-desktop.svg); padding : 40px 0px; background-color : #3A3053"
+  >
+    <input class="rounded-md pl-4 outline-none" placeholder="Shorten a link here..." style="width: 50%;"/>
+    <button class="font-bold bg-main-cyan text-white px-10 py-3 rounded-md text-sm w-fit"> Shorten it! </button>
+  </div>
+
+
+
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Amir NBK</a>.
+  </div> -->
 </body>
+
+
+<script src="index.js"></script>
+
 </html>
