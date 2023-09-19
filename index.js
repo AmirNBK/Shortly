@@ -14,7 +14,6 @@ const featuresFooterItems = FeaturesFooter.map(item => `<li> ${item} </li>`);
 
 featuresFooter.innerHTML = featuresFooterItems.join('');
 
-
 const ResourcesFooter = ['Blog', 'Developers', 'Support']
 
 const resourcesFooter = document.querySelector('.footer__Resources__items')
@@ -23,10 +22,18 @@ const resourcesFooterItems = ResourcesFooter.map(item => `<li> ${item} </li>`);
 
 resourcesFooter.innerHTML = resourcesFooterItems.join('');
 
-const CompanyFooter = ['About', 'Our Team', 'Careers', 'Contact']
+const CompanyFooter = ['About', 'Our Team', 'Careers', 'Contact'];
 
-const companyFooter = document.querySelector('.footer__Company__items')
+const companyFooter = document.querySelector('.footer__Company__items');
 
 const companyFooterItems = CompanyFooter.map(item => `<li> ${item} </li>`);
 
 companyFooter.innerHTML = companyFooterItems.join('');
+
+const input = document.querySelector('.shorten-link-input');
+
+const button = document.querySelector('.shorten-link-button');
+
+button.addEventListener('click' , function() {
+    
+})
