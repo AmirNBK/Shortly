@@ -6,6 +6,15 @@ const headerItems = Items.map(item => `<li> ${item} </li>`);
 
 header.innerHTML = headerItems.join('');
 
+async function getLink(link) {
+    try {
+        const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${link}`)
+        const data = await response.json();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const FeaturesFooter = ['Link Shortening', 'Branded Links', 'Analytics']
 
 const featuresFooter = document.querySelector('.footer__Features__items')
@@ -34,6 +43,14 @@ const input = document.querySelector('.shorten-link-input');
 
 const button = document.querySelector('.shorten-link-button');
 
-button.addEventListener('click' , function() {
-    
+button.addEventListener('click', function () {
+    if (input.value) {
+        getLink(input.value)
+    }
+    else {
+        input.classList.add('border-2')
+        input.classList.add('border-solid')
+        input.classList.add('border-red-500')
+        input.classList.add('placeholder:text-red-300')
+    }
 })
