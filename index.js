@@ -6,33 +6,53 @@ const headerItems = Items.map(item => `<li> ${item} </li>`);
 
 header.innerHTML = headerItems.join('');
 
-const mbDiv = document.querySelector('.linkShortenerSection');
-
-let marginBottom = 80;
-
 const shortedLinks = []
 
 const finalLinks = document.querySelector('.finalLinks')
 
+function copyToClipboard(event) {
+    const textToCopy = event.target.getAttribute('data-clipboard-text');
+
+    const tempTextarea = document.createElement('textarea');
+    tempTextarea.value = textToCopy;
+    document.body.appendChild(tempTextarea);
+    tempTextarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempTextarea);
+
+    event.target.innerText = 'Copied!';
+    setTimeout(() => {
+        event.target.innerText = 'Copy';
+    }, 2000);
+}
+
+
 function updateLinksList() {
     let finalLinksItems = shortedLinks.map(item => `
     <div class="bg-white relative z-[2] px-6 py-3 mt-8 mx-36 rounded-md flex flex-row justify-between items-center">
-    <p class="font-semibold">
-    ${item.link}
-    </p>
-    <div class="flex flex-row items-center gap-3">
-      <a href={${item.shortLink}} target="_blank" style="color: hsl(180, 66%, 49%)">
-        ${item.shortLink}
-      </a>
-      <button class="shorten-link-button font-bold bg-main-cyan text-white px-8 py-2 rounded-md text-sm w-fit">
-        copy
-      </button>
-    </div>
+      <p class="font-semibold">
+        ${item.link}
+      </p>
+      <div class="flex flex-row items-center gap-3">
+        <a href=${item.shortLink} target="_blank" style="color: hsl(180, 66%, 49%)">
+          ${item.shortLink}
+        </a>
+        <button class="shorten-link-button font-bold bg-main-cyan text-white px-8 py-2 rounded-md text-sm w-fit"
+          data-clipboard-text="${item.shortLink}">
+          Copy
+        </button>
+      </div>
     </div>
     `);
 
-    finalLinks.innerHTML = finalLinksItems.join('')
+    finalLinks.innerHTML = finalLinksItems.join('');
+    
+    const copyButtons = document.querySelectorAll('.shorten-link-button');
+    copyButtons.forEach(button => {
+        button.addEventListener('click', copyToClipboard);
+    });
 }
+
 
 async function getLink(link) {
     try {
@@ -40,8 +60,6 @@ async function getLink(link) {
         const data = await response.json();
         shortedLinks.push({ link, shortLink: data.result.full_short_link });
         updateLinksList();
-        // marginBottom = marginBottom + 80;
-        // mbDiv.classList.add(`-mb-[${marginBottom}px]`)
     } catch (error) {
         console.log(error);
     }
